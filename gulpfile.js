@@ -6,9 +6,23 @@ var wiredep = require('wiredep').stream;
 gulp.task('inject', function () {
 
     var wdOptions = {
-        bowerJson: require('./bower.json'),
-        directory: './public/lib',
-        ignorePath: '../../../public'
+        ignorePath: '../../../public',
+        overrides: {
+            "bootstrap": {
+                "main": [
+                "less/bootstrap.less",
+                "dist/css/bootstrap.min.css",
+                "dist/js/bootstrap.js"
+              ]
+            },
+            "font-awesome": {
+                "main": [
+                "less/font-awesome.less",
+                "css/font-awesome.min.css",
+                "scss/font-awesome.scss"
+              ]
+            }
+        }
     };
 
     var giSrc = gulp.src(['./public/styles/*.css', './public/scripts/*.js'], {
@@ -32,8 +46,10 @@ gulp.task('serve', ['inject'], function () {
         env: {
             'PORT': 8090,
         },
-        watch: ['*.js', 'public/**/*.js', 'public/**/*.css', 'src/**/*.html']
+        watch: ['*.js', 'public/**/*.js', 'public/**/*.css', 'src/**/*.ejs']
     }
 
-    return gulpNodemon(options).on('restart', function (ev) {});
+    return gulpNodemon(options).on('restart', function (ev) {
+        console.log('Application restart');
+    });
 });

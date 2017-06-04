@@ -1,4 +1,5 @@
 var express = require('express');
+var nav = require('./src/routes/nav.json');
 
 var app = express();
 
@@ -10,9 +11,14 @@ app.use(express.static('src/views'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+var router = require('./src/routes/routes')(nav);
+
+app.use('/', router);
+
 app.get('/', function (req, resp) {
     resp.render('index', {
-        title: 'Hello world'
+        title: 'Hello world',
+        nav: nav
     });
 });
 
