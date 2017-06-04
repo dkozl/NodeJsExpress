@@ -7,8 +7,13 @@ var port = process.env.PORT || 8090;
 app.use(express.static('public'));
 app.use(express.static('src/views'));
 
+app.set('views', './src/views');
+app.set('view engine', 'ejs');
+
 app.get('/', function (req, resp) {
-    resp.send('<html><body><p>Hello world</p></body></html>')
+    resp.render('index', {
+        title: 'Hello world'
+    });
 });
 
 app.listen(port, function (err) {

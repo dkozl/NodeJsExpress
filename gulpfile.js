@@ -7,7 +7,8 @@ gulp.task('inject', function () {
 
     var wdOptions = {
         bowerJson: require('./bower.json'),
-        directory: './public/lib'
+        directory: './public/lib',
+        ignorePath: '../../../public'
     };
 
     var giSrc = gulp.src(['./public/styles/*.css', './public/scripts/*.js'], {
@@ -18,7 +19,7 @@ gulp.task('inject', function () {
         ignorePath: '/public'
     };
 
-    return gulp.src('./src/views/*.html')
+    return gulp.src('./src/views/**/*.ejs')
         .pipe(wiredep(wdOptions))
         .pipe(gulpInject(giSrc, giOptions))
         .pipe(gulp.dest('./src/views'));

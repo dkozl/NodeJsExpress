@@ -1,22 +1,38 @@
 {
-  "name": "testexpressjs",
-  "description": "",
-  "main": "app.js",
-  "authors": [
+    "name": "testexpressjs",
+    "description": "",
+    "main": "app.js",
+    "authors": [
     "Damian Kozlowski <dkozl@go2.pl>"
   ],
-  "license": "ISC",
-  "homepage": "",
-  "ignore": [
+    "license": "ISC",
+    "homepage": "",
+    "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
   ],
-  "dependencies": {
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1",
-    "font-awesome": "^4.7.0"
-  }
+    "dependencies": {
+        "bootstrap": "^3.3.7",
+        "jquery": "^3.2.1",
+        "font-awesome": "^4.7.0"
+    },
+    "overrides": {
+        "bootstrap": {
+            "main": [
+                "less/bootstrap.less",
+                "dist/css/bootstrap.min.css",
+                "dist/js/bootstrap.js"
+              ]
+        },
+        "font-awesome": {
+            "main": [
+                "less/font-awesome.less",
+                "css/font-awesome.min.css",
+                "scss/font-awesome.scss"
+              ]
+        }
+    }
 }
