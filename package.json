@@ -1,0 +1,21 @@
+{
+  "name": "testexpressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-nodemon": "^2.2.1",
+    "wiredep": "^4.0.0"
+  }
+}

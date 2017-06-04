@@ -1,0 +1,13 @@
+body, html,
+div,
+section, atricle, header, footer, main, aside,
+p,
+ul, ol, li
+{
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
