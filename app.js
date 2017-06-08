@@ -11,9 +11,9 @@ app.use(express.static('src/views'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-var router = require('./src/routes/routes')(nav);
+var gitHubRoute = require('./src/controllers/github')(nav);
 
-app.use('/', router);
+app.use('/github', gitHubRoute);
 
 app.get('/', function (req, resp) {
     resp.render('index', {

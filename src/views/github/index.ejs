@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <%= title %>
+    </title>
+    <% include ../shared/styles %>
+</head>
+
+<body>
+</body>
+    <%- include('../shared/header'); %>
+    <main class="container">        
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="userName">User name:</label>
+                <input class="form-control" id="userName" type="text"/>
+            </div>
+            <input class="btn btn-default" type="button" value="Search"/>
+        </form>
+    </main>
+    <% include ../shared/scripts %>
+</html>

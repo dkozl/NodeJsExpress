@@ -1,14 +1,6 @@
 [
     {
-        "text": "Route 1",
-        "link": "/route1"
-    },
-    {
-        "text": "Route 2",
-        "link": "/route2"
-    },
-    {
-        "text": "Route 3",
-        "link": "/route3"
+        "text": "Github",
+        "link": "/github"
     }
 ]
