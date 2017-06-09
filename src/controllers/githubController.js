@@ -1,4 +1,5 @@
 var express = require('express');
+var github = require('../modules/githubModule');
 
 var func = (nav) => {
     const windowTitle = 'GitHub user information';
@@ -16,7 +17,11 @@ var func = (nav) => {
 
     gitHubRoute.route('/user')
         .get((req, resp) => {
-            resp.send('user: ' + req.query.name);
+            console.log(req.query);
+
+            github(req.query.name, (err, data) => {
+                resp.render('github/user', data);
+            });
         });
 
     return gitHubRoute;

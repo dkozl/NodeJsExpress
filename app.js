@@ -11,7 +11,7 @@ app.use(express.static('src/views'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-var gitHubRoute = require('./src/controllers/github')(nav);
+var gitHubRoute = require('./src/controllers/githubController')(nav);
 
 app.use('/github', gitHubRoute);
 

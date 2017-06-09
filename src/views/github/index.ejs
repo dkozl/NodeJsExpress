@@ -12,14 +12,39 @@
 <body>
 </body>
     <%- include('../shared/header'); %>
-    <main class="container">        
+    <main class="container">
         <form class="form-inline">
             <div class="form-group">
                 <label for="userName">User name:</label>
-                <input class="form-control" id="userName" type="text"/>
+                <input class="form-control" id="userName" type="text" />
             </div>
-            <input class="btn btn-default" type="button" value="Search"/>
+            <input id="searchUser" class="btn btn-default" type="button" value="Search" />
         </form>
+        <div id="userInfo"></div>
     </main>
     <% include ../shared/scripts %>
+    <script type="text/javascript">
+        $(() => {
+            $('#searchUser').click(() => {
+                var ajax = dlk.modules.ajax(jQuery);
+                console.log(ajax);
+
+                ajax.get({
+                    url: '/github/user',
+                    data: {
+                        'name': $('#userName').val()
+                    },
+                    success: function(data) {
+                        $('#userInfo').html(data);
+                    },
+                    error: function() {
+                        console.log("ERROR", arguments);
+                    }
+                })
+
+                return false;
+            });
+        });
+
+    </script>
 </html>
