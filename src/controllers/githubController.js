@@ -18,6 +18,7 @@ var func = (nav) => {
     gitHubRoute.route('/user')
         .get((req, resp) => {
             github(req.query.name, (err, data) => {
+                data.show_limit = 5;
                 resp.render('github/user', data);
             });
         });
