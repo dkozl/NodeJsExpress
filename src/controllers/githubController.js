@@ -1,5 +1,5 @@
 var express = require('express');
-var github = require('../modules/githubModule');
+var github = require('../modules/github');
 
 var func = (nav) => {
     const windowTitle = 'GitHub user information';
