@@ -1,5 +1,6 @@
 const http = require('https');
 const url = require('url');
+const _ = require('underscore');
 
 var getGitHubUser = function (userName, callback) {
 
@@ -30,11 +31,15 @@ var getGitHubUser = function (userName, callback) {
     }
 
     getData(`https://api.github.com/users/${userName}`, function (err, user) {
-        getData(user.repos_url, function(err, repos){
-            user.repos = repos;
-            console.log(user);
-            callback(null, user);
-        })
+        getData(user.repos_url, function (err, repos) {
+            callback(null, {
+                user: user,
+                repos: _.chain(repos)
+                    .sortBy(repo => -repo.stargazers_count)
+                    .sortBy(repo => repo.id)
+                    .value()
+            });
+        });
     });
 }
 

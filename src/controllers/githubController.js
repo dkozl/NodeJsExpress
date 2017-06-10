@@ -17,8 +17,6 @@ var func = (nav) => {
 
     gitHubRoute.route('/user')
         .get((req, resp) => {
-            console.log(req.query);
-
             github(req.query.name, (err, data) => {
                 resp.render('github/user', data);
             });

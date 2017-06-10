@@ -1,20 +1,30 @@
 <section>
     <div class="clearfix">
-        <img class="pull-left img-avatar img-avatar-lg" src="<%= avatar_url %>" alt="<%= name %>" />
+        <img class="pull-left img-avatar img-avatar-lg" src="<%= user.avatar_url %>" alt="<%= user.name %>" />
         <h2 class="pull-left">
-            <%= name %>
+            <%= user.name %>
         </h2>
     </div>
     <ul class="list-unstyled">
-        <% for(var i=0; i<repos.length; i++) {%>
-            <li>
-                <a href="<%=repos[i].html_url%>" target="_blank">
-                    <%=repos[i].name%>
-                </a>
-                <p>
-                    <%=repos[i].description%>
-                </p>
-            </li>
+        <% if (repos.length > 0) {%>
+            <% for(var i=0; i<Math.min(5, repos.length); i++) {%>
+                <li>
+                    <article>
+                        <h3>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <a href="<%=repos[i].html_url%>" target="_blank">
+                                <%=repos[i].name%>
+                            </a>
+                            <small>(<%=repos[i].stargazers_count%>)</small>
+                        </h3>
+                        <p>
+                            <%=repos[i].description%>
+                        </p>
+                    </article>
+                </li>
             <%}%>
+        <%} else {%>
+            <p class="bg-warning"><span class="glyphicon glyphicon-remove"></span> No repositories</p>
+        <%}%>
     </ul>
 </section>
