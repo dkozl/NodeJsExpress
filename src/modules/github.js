@@ -35,8 +35,10 @@ var getGitHubUser = function (userName, callback) {
             callback(null, {
                 user: user,
                 repos: _.chain(repos)
-                    .sortBy(repo => -repo.stargazers_count)
-                    .sortBy(repo => repo.id)
+                    .sortBy('id')
+                    .reverse()
+                    .sortBy('stargazers_count')
+                    .reverse()
                     .value()
             });
         });

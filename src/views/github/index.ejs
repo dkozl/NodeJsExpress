@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 
-<head>
-    <meta charset="utf-8" />
-    <title>
-        <%= title %>
-    </title>
-    <% include ../shared/styles %>
-</head>
+    <% include ../shared/head %>
 
-<body>
-    <% include ../shared/header %>
-    <main class="container">
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="userName">User name:</label>
-                <input class="form-control" id="userName" type="text" />
-            </div>
-            <input id="searchUser" class="btn btn-default" type="button" value="Search" />
-        </form>
-        <div id="userInfo"></div>
-    </main>
-    <% include ../shared/footer %>
-</body>
+    <body>
+        <% include ../shared/header %>
+        <main class="container">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="userName">User name:</label>
+                    <input class="form-control" id="userName" type="text" />
+                </div>
+                <input id="searchUser" class="btn btn-default" type="button" value="Search" />
+            </form>
+            <div id="userInfo"></div>
+        </main>
+        <% include ../shared/footer %>
+    </body>
     <% include ../shared/scripts %>
-        <script type="text/javascript">
-            $(() => {
-                var ajax = dlk.modules.ajax($);
-                var github = dlk.modules.github(ajax);
+    <script type="text/javascript">
+        $(() => {
+            var ajax = dlk.modules.ajax($);
+            var github = dlk.modules.github(ajax);
 
-                $('#searchUser').click(function() {
-                    var $userInfo = $('#userInfo');
-                    $userInfo.fadeOut(500, function() {
-                        github.getUser($('#userName').val(), function(err, data) {
-                            if (!err) {
-                                $userInfo.html(data).fadeIn(500);
-                            }
-                        });
+            $('#searchUser').click(function() {
+                var $userInfo = $('#userInfo');
+                $userInfo.fadeOut(500, function() {
+                    github.getUser($('#userName').val(), function(err, data) {
+                        if (!err) {
+                            $userInfo.html(data).fadeIn(500);
+                        }
                     });
-                    return false;
                 });
+                return false;
             });
-
-        </script>
-
+        });
+    </script>
 </html>
