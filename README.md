@@ -1,6 +1,14 @@
 # NodeJsExpress
 NodeJS and Express playground
 
-npm install
-bower intall
-gulp serve
+Install node dependencied
+
+```npm install```
+
+Install Bower libraries
+
+```bower intall```
+
+Start server
+
+```gulp serve```
